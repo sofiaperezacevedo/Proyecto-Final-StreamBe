@@ -12,7 +12,7 @@ export default function QuienesSomos() {
     <>
       <header className="header-fijo">
         <a href="/">
-          <img src="/Adobe Express - file.png" alt="Logo" className="logo" />
+          <img src="/fotos-libros/Adobe Express - file.png" alt="Logo" className="logo" />
         </a>
 
         <div className="titulo">

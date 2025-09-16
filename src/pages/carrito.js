@@ -53,11 +53,7 @@ function Carrito() {
     <div className="carrito-container">
       <header>
         <a href="/">
-          <img
-            src="/Adobe Express - file.png"
-            alt="Logo"
-            className="logo"
-          />
+          <img src="/fotos-libros/Adobe Express - file.png" alt="Logo" className="logo" />
         </a>
         <h1>Carrito de Compras</h1>
         <nav>

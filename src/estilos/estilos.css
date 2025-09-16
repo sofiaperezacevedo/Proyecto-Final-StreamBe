@@ -1,9 +1,11 @@
-/* Estilo general */
+/* ====================== */
+/* RESET GENERAL */
+/* ====================== */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif; /* Fuente más profesional */
+  font-family: 'Roboto', sans-serif;
 }
 
 body, html {
@@ -17,6 +19,9 @@ body {
   flex-direction: column;
 }
 
+/* ====================== */
+/* HEADER */
+/* ====================== */
 header {
   position: fixed;
   top: 0;
@@ -27,15 +32,19 @@ header {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Hace que el logo y los enlaces estén a los extremos */
+  justify-content: space-between;
 }
 
 header .titulo h1 {
   color: #ffffff;
-  font-size: 32px; /* Título más grande */
+  font-size: 32px;
   font-weight: 700;
   margin-left: 20px;
   text-align: left;
+}
+
+p, h3 {
+  color: #37224F;
 }
 
 .logo {
@@ -48,8 +57,8 @@ header .titulo h1 {
 nav {
   display: flex;
   gap: 20px;
-  justify-content: flex-end; /* Coloca los enlaces a la derecha */
-  width: 50%; /* Mantiene los enlaces alineados a la derecha */
+  justify-content: flex-end;
+  width: 50%;
 }
 
 nav a {
@@ -65,35 +74,67 @@ nav a:hover {
   font-weight: 600;
 }
 
-/* Lista de libros */
+/* ====================== */
+/* GRID DE LIBROS */
+/* ====================== */
 #lista-libros {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  max-width: 1400px; /* o ajustá según tu diseño */
+  max-width: 1400px;
   margin: 0 auto;
   gap: 20px;
   padding: 20px;
   justify-items: center;
 }
 
-
-/* Eliminamos la transición para que al hacer clic no haya animación */
-.libro {
-  width: 250px; /* Ajustar el tamaño de las tarjetas */
+.libro-card {
+  width: 250px;
+  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   gap: 10px;
   text-align: center;
-  border: 1px solid #ddd; /* Borde para las tarjetas */
+  border: 1px solid #ddd;
   padding: 15px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-  transition: none; /* Eliminar la transición */
+  transition: transform 0.2s ease;
 }
 
-#libro-sinopsis {
-  margin-top: 10px;
+.libro-card:hover {
+  transform: translateY(-5px);
+}
+
+.libro-card img {
+  width: 160px;
+  height: 230px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin: 0 auto 10px;
+}
+
+/* ====================== */
+/* DETALLE DE LIBRO */
+/* ====================== */
+.detalle-container {
+  max-width: 900px;
+  margin: 120px auto 40px;
+  background: #fff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.08);
+}
+
+.detalle-container h2,
+.detalle-container h3,
+.detalle-container p,
+.detalle-container strong {
+  color: #333; /* texto oscuro y legible */
+}
+
+.detalle-container .sinopsis {
+  margin-top: 15px;
   background: #eef0ff;
   border-left: 5px solid #3D4171;
   padding: 15px 20px;
@@ -101,42 +142,37 @@ nav a:hover {
   font-size: 15px;
   line-height: 1.6;
   color: #333;
-  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
   white-space: pre-wrap;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
 }
 
-
-/* Asegura que las imágenes de los libros tengan una altura fija y sean rectangulares */
-.libro img {
-  width: 100%; /* Ocupa todo el ancho del contenedor */
-  height: 300px; /* Fija la altura de las imágenes para que sean rectangulares */
-  object-fit: cover; /* Ajusta la imagen para que no se deforme ni se recorte */
-  border-radius: 8px;
-}
-
-button {
-  padding: 6px 12px;
-  background-color: #37224F;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #DD8D94;
-}
-
-.main {
-  flex-grow: 1;
+/* ====================== */
+/* GALERÍA */
+/* ====================== */
+.galeria {
   display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  padding-top: 120px;
+  margin-bottom: 30px;
 }
 
-/* Modal para imágenes */
+.galeria img {
+  width: 100px !important;
+  height: auto !important;
+  border-radius: 6px;
+  cursor: pointer;
+  object-fit: cover;
+  transition: transform 0.2s;
+}
+
+.galeria img:hover {
+  transform: scale(1.05);
+}
+
+/* ====================== */
+/* MODAL */
+/* ====================== */
 .modal {
   display: none;
   position: fixed;
@@ -145,41 +181,25 @@ button:hover {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.85);
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
 .modal img {
-  max-width: 80%;  /* Tamaño de la imagen más grande */
-  max-height: 80%; /* Limitar la altura de la imagen */
-  border-radius: 8px;
-  box-shadow: 0 0 20px black;
-  cursor: zoom-in;
-  transition: transform 0.2s ease;
-}
-
-/* Cuando la imagen es ampliada, la escalamos ligeramente */
-.modal img.zoomed {
-  transform: scale(3); /* Imagen un 20% más grande cuando haces zoom */
-  cursor: zoom-out;
-}
-
-#modal-info {
-  background-color: white;
-  padding: 20px;
-  max-width: 600px;
-  margin: 20px auto;
+  max-width: 80%;
+  max-height: 80%;
   border-radius: 10px;
-  text-align: left;
-  color: #333;
-  font-family: sans-serif;
+  box-shadow: 0 0 30px black;
+  cursor: zoom-in;
+  transition: transform 0.3s ease;
 }
 
-#modal-sinopsis {
-  margin-top: 10px;
-  line-height: 1.5;
+.modal img.zoomed {
+  transform: scale(2.5);
+  cursor: move;
+  transition: none;
 }
 
 .cerrar {
@@ -191,49 +211,45 @@ button:hover {
   cursor: pointer;
 }
 
-/* Flechas para cambiar imagenes */
 .flecha {
   position: absolute;
   top: 50%;
-  transform: translateY(-50%);
   font-size: 3rem;
   color: white;
   cursor: pointer;
   user-select: none;
-  padding: 0 20px;
 }
 
 .flecha.izq {
-  left: 10px;
+  left: 20px;
 }
 
 .flecha.der {
-  right: 10px;
+  right: 20px;
 }
 
-
-/* Estilo para los pasos de "¿Cómo comprar?" */
-#como-comprar {
-  display: flex;
-  flex-direction: column; /* Cambia la dirección a columna */
-  align-items: flex-start; /* Alinea los elementos al inicio */
-  gap: 20px; /* Espacio entre los pasos */
-  margin-top: 30px;
+/* ====================== */
+/* BOTONES */
+/* ====================== */
+button, 
+#agregar-carrito-principal {
+  background-color: #a64ca6;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-#como-comprar h2 {
-  font-size: 24px;
-  color: #37224F;
-  margin-bottom: 20px;
+button:hover, 
+#agregar-carrito-principal:hover {
+  background-color: #ff4da6; 
 }
 
-#como-comprar p {
-  font-size: 16px;
-  color: #333;
-}
-
-/* Sección de Información Preliminar */
-/* Estilo para la sección de Información Preliminar */
+/* ====================== */
+/* INFO PRELIMINAR */
+/* ====================== */
 .informacion-preliminar {
   display: flex;
   flex-wrap: wrap;
@@ -245,7 +261,7 @@ button:hover {
 }
 
 .informacion-item {
-  flex: 1 1 45%; /* hace que ocupen casi media pantalla cada uno */
+  flex: 1 1 45%;
   background: white;
   display: flex;
   align-items: center;
@@ -294,7 +310,9 @@ button:hover {
   background-color: #2c2f5a;
 }
 
-/* Estilo para la sección del buscador */
+/* ====================== */
+/* BUSCADOR */
+/* ====================== */
 .buscador {
   margin-top: 60px;
   display: flex;
@@ -305,8 +323,8 @@ button:hover {
   margin-right: auto;
   padding: 20px;
   border-radius: 12px;
-  background-color: #f9f9f9; /* Fondo suave */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Agrega sombra */
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .buscador input,
@@ -339,17 +357,9 @@ button:hover {
   background-color: #c08a52;
 }
 
-.libro button:disabled,
-.libro .stock:contains("Reservado") {
-  background-color: #ccc;
-  color: #666;
-  cursor: not-allowed;
-}
-
-.libro:has(button:disabled) {
-  opacity: 0.5;
-}
-
+/* ====================== */
+/* RESPONSIVE */
+/* ====================== */
 @media (max-width: 1200px) {
   #lista-libros {
     grid-template-columns: repeat(4, 1fr);
@@ -374,14 +384,9 @@ button:hover {
   }
 }
 
-.galeria img:last-child {
-  aspect-ratio: 2/3; /* Rectangular horizontal */
-  object-fit: cover;
-  width: 100px;
-  height: auto;
-  border-radius: 6px;
-}
-
+/* ====================== */
+/* SUGERENCIAS */
+/* ====================== */
 .sugerencias {
   margin-top: 60px;
 }
@@ -389,26 +394,27 @@ button:hover {
 .sugerencias h3 {
   font-size: 22px;
   margin-bottom: 20px;
+  color: #3D4171;
 }
 
 .sugerencias-contenedor {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  justify-content: flex-start; 
 }
+
 .sugerencia {
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0,0,0,0.08);
-  width: 180px;
+  width: 200px;
   text-align: center;
-  padding: 10px;
+  padding: 15px;
   transition: transform 0.2s ease;
-
   display: flex;
   flex-direction: column;
-  height: 100%;
-  min-height: 400px; /* fuerza mismo alto mínimo */
+  justify-content: space-between;
 }
 
 .sugerencia:hover {
@@ -417,22 +423,22 @@ button:hover {
 
 .sugerencia img {
   width: 100%;
-  height: 220px;
+  height: 250px;
   object-fit: cover;
   border-radius: 6px;
-  background-color: #f0f0f0; /* en caso de imagen rota */
+  background-color: #f0f0f0;
 }
 
 .sugerencia h4 {
   font-size: 16px;
-  margin: 8px 5px 4px;
+  margin: 8px 0 4px;
   color: #222;
 }
 
 .sugerencia p {
+  margin: 2px 0;
   font-size: 14px;
   color: #555;
-  margin-bottom: 8px;
 }
 
 .sugerencia button {
@@ -443,29 +449,16 @@ button:hover {
   padding: 6px 12px;
   cursor: pointer;
   font-size: 14px;
-  margin-top: auto; /* empuja hacia el fondo */
+  margin-top: auto;
 }
 
 .sugerencia button:hover {
   background-color: #2c2f5a;
 }
 
-#agregar-carrito-principal {
-  background-color: #3D4171;
-  color: white;
-  border: none;
-  border-radius: 6px;
-  padding: 10px 18px;
-  font-size: 15px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-#agregar-carrito-principal:hover {
-  background-color: #2c2f5a;
-}
-
-/* Título de la sección de promociones */
+/* ====================== */
+/* PROMOS */
+/* ====================== */
 .titulo-promos {
   font-size: 22px;
   color: #3D4171;
@@ -475,7 +468,7 @@ button:hover {
 
 .promo-grid {
   display: flex;
-  flex-wrap: wrap; /* permite que bajen si no entran en pantalla */
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
   max-width: 1300px;
@@ -493,8 +486,8 @@ button:hover {
   min-height: 140px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
   transition: transform 0.2s ease;
-  width: 380px; /* fuerza 3 por fila */
-  flex-shrink: 0; /* evita que se achiquen */
+  width: 380px;
+  flex-shrink: 0;
 }
 
 .promo-item:hover {
@@ -507,7 +500,6 @@ button:hover {
   border-radius: 6px;
 }
 
-/* Promo individual (igual estilo que .informacion-item) */
 .promo-item h3 {
   font-size: 18px;
   margin: 0;
@@ -525,4 +517,3 @@ button:hover {
   color: #999;
   font-size: 14px;
 }
-
