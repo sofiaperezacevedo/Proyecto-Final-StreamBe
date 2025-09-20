@@ -106,28 +106,28 @@ export default function Index() {
                     <Promo
                         img="/fotos-libros/given-pack1.jpg"
                         titulo="Pack Given 1 y 3"
-                        precio="8000"
-                        tachado="10000"
+                        precio={8000}
+                        tachado={10000}
                         query="titulo=Pack Given 1 y 3&autor=Natsuki Kizu&genero=Manga, BL&idioma=español&tapa=Blanda&precio=8000&img=/fotos-libros/given-pack1.jpg"
                     />
                     <Promo
                         img="/fotos-libros/banana-pack1.jpg"
                         titulo="Pack Banana Fish 1 y 2"
-                        precio="12000"
-                        tachado="14000"
+                        precio={12000}
+                        tachado={14000}
                         query="titulo=Pack Banana Fish 1 y 2&autor=Akimi Yoshida&genero=Manga, Acción&idioma=español&tapa=Blanda&precio=12000&img=/fotos-libros/banana-pack1.jpg"
                     />
                     <Promo
                         img="/fotos-libros/ouran-pack1.jpg"
                         titulo="Pack Ouran High School Host Club 1 y 2"
-                        precio="16000"
-                        tachado="20000"
+                        precio={16000}
+                        tachado={20000}
                         query="titulo=Pack Ouran High School Host Club 1 y 2&autor=Bisco Hatori&genero=Manga, Romance, Comedia&idioma=español&tapa=Blanda&precio=16000&img=/fotos-libros/ouran-pack1.jpg"
                     />
                     <Promo
                         img="/fotos-libros/saga.jpg"
                         titulo="Saga Asylum"
-                        precio="70000"
+                        precio={70000}
                         query="titulo=Saga Asylum&autor=Madeleine Roux&genero=Terror, Misterio&idioma=español&tapa=Blanda&precio=70000&img=/fotos-libros/saga2.jpg"
                     />
                 </div>
@@ -215,7 +215,7 @@ export default function Index() {
                             <p>
                                 <strong>Precio:</strong> ${libro.precio}
                             </p>
-                            <button onClick={() => agregarAlCarrito(libro)}>
+                            <button onClick={() => agregarAlCarrito({...libro, precio: Number(libro.precio), })}>
                                 Agregar al carrito
                             </button>
                         </div>

@@ -154,9 +154,7 @@ const Producto = () => {
       localStorage.setItem("carrito", JSON.stringify(carritoNuevo));
       setCarrito(carritoNuevo);
     }
-    alert(`${libroConPrecio.titulo} agregado al carrito`);
   };
-
 
   if (!libro) return <p>Cargando...</p>;
 
@@ -242,7 +240,6 @@ const Producto = () => {
             <div key={i} className="sugerencia">
               <Link
                 to={`/producto?titulo=${encodeURIComponent(s.titulo)}&autor=${encodeURIComponent(s.autor)}&genero=${encodeURIComponent(Array.isArray(s.genero) ? s.genero.join(",") : s.genero)}&tapa=${encodeURIComponent(s.tapa)}&idioma=${encodeURIComponent(s.idioma)}&precio=${encodeURIComponent(Number(s.precio))}&img=${encodeURIComponent(s.img)}`}>
-
                 <img src={s.img} alt={s.titulo} />
               </Link>
               <h4>{s.titulo}</h4>
