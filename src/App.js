@@ -4,6 +4,7 @@ import Carrito from "./pages/carrito";
 import ComoComprar from "./pages/como-comprar";
 import QuienesSomos from "./pages/quienes-somos";
 import Producto from "./pages/producto";
+import Login from "./pages/Login";
 import "./App.css";
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         <Route path="/como-comprar" element={<ComoComprar />} />
         <Route path="/quienes-somos" element={<QuienesSomos />} />
         <Route path="/producto" element={<Producto />} />
+        
+<Route path="/login" element={<Login />} />
+
       </Routes>
     </Router>
   );

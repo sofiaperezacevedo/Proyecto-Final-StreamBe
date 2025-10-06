@@ -3,7 +3,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Roboto', sans-serif; /* Fuente más profesional */
+  font-family: 'Roboto', sans-serif; 
 }
 
 body, html {
@@ -27,13 +27,13 @@ header {
   z-index: 1000;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Hace que el logo y los enlaces estén a los extremos */
+  justify-content: space-between; 
 }
 
 header .titulo h1 {
   color: #ffffff;
-  font-size: 32px; /* Título más grande */
-  font-weight: 700; /* Peso de fuente más fuerte */
+  font-size: 32px; 
+  font-weight: 700; 
   margin-left: 20px;
   text-align: left;
 }
@@ -48,8 +48,8 @@ header .titulo h1 {
 nav {
   display: flex;
   gap: 20px;
-  justify-content: flex-end; /* Coloca los enlaces a la derecha */
-  width: 50%; /* Mantiene los enlaces alineados a la derecha */
+  justify-content: flex-end; 
+  width: 50%; 
 }
 
 nav a {
@@ -65,13 +65,12 @@ nav a:hover {
   font-weight: 600;
 }
 
-/* Ajustes para la visualización del carrito */
 #carrito {
   background-color: #fff;
   border-radius: 8px;
   padding: 20px;
   max-width: 800px;
-  margin: 100px auto 20px auto; /* Asegura que el carrito esté centrado */
+  margin: 100px auto 20px auto; 
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
@@ -82,7 +81,6 @@ nav a:hover {
   color: #37224F;
 }
 
-/* Lista de productos del carrito */
 #carrito-lista {
   margin-bottom: 20px;
 }

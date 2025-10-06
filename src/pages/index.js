@@ -52,29 +52,18 @@ export default function Index() {
                 <div className="titulo">
                     <h1>Venta de Libros Usados</h1>
                 </div>
-
                 <nav>
-                    <Link to="/">Venta</Link>
-                    <Link to="/como-comprar">¿Cómo comprar?</Link>
-                    <Link to="/quienes-somos">¿Quiénes somos?</Link>
-                    <a
-                        href="https://www.instagram.com/librosusados.munro/"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        Instagram
-                    </a>
-                    <a
-                        href="https://www.facebook.com/profile.php?id=61574672454293&mibextid=ZbWKwL"
-                        target="_blank"
-                        rel="noreferrer"
-                    >
-                        Facebook
-                    </a>
-                    <Link to="/carrito">
-                        Carrito (<span>{carrito.length}</span>)
-                    </Link>
-                </nav>
+  <Link to="/">Venta</Link>
+  <Link to="/como-comprar">¿Cómo comprar?</Link>
+  <Link to="/quienes-somos">¿Quiénes somos?</Link>
+  <a href="https://www.instagram.com/librosusados.munro/" target="_blank" rel="noreferrer">Instagram</a>
+  <a href="https://www.facebook.com/profile.php?id=61574672454293&mibextid=ZbWKwL" target="_blank" rel="noreferrer">Facebook</a>
+  <Link to="/login">Usuario</Link>  
+  <Link to="/carrito">Carrito (<span>{carrito.length}</span>)</Link>
+  
+</nav>
+
+
             </header>
 
             {/* Información preliminar */}
