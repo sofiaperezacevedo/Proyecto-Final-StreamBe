@@ -2,24 +2,23 @@ import { useEffect, useState } from "react";
 import "../estilos/carrito.css";
 
 function Carrito() {
+  const [usuario, setUsuario] = useState(null);
   const [carrito, setCarrito] = useState([]);
   const [total, setTotal] = useState(0);
   const [mensajeCopiado, setMensajeCopiado] = useState(false);
 
   useEffect(() => {
-    mostrarCarrito();
-  }, []);
+    const carritoGuardado = JSON.parse(localStorage.getItem("carrito")) || [];
+    const usuarioGuardado = JSON.parse(localStorage.getItem("usuario")) || null;
+    setCarrito(carritoGuardado);
+    setUsuario(usuarioGuardado);
 
-  const mostrarCarrito = () => {
-    const data = JSON.parse(localStorage.getItem("carrito")) || [];
-    setCarrito(data);
-
-    const nuevoTotal = data.reduce(
+    const nuevoTotal = carritoGuardado.reduce(
       (acc, item) => acc + item.precio * item.cantidad,
       0
     );
     setTotal(nuevoTotal);
-  };
+  }, []);
 
   const eliminarDelCarrito = (index) => {
     const data = [...carrito];
@@ -53,11 +52,16 @@ function Carrito() {
     <div className="carrito-container">
       <header>
         <a href="/">
-          <img src="/fotos-libros/Adobe Express - file.png" alt="Logo" className="logo" />
+          <img
+            src="/fotos-libros/Adobe Express - file.png"
+            alt="Logo"
+            className="logo"
+          />
         </a>
         <h1>Carrito de Compras</h1>
+
         <nav>
-          <a href="/">Venta</a>
+          <a href="/#lista-libros">Venta</a>
           <a href="/como-comprar">¿Cómo comprar?</a>
           <a href="/quienes-somos">¿Quiénes somos?</a>
           <a
@@ -75,18 +79,42 @@ function Carrito() {
             Facebook
           </a>
           <a href="/carrito">
-            Carrito (<span>{carrito.length}</span>)
+            Carrito (<span id="carrito-contador">{carrito.length}</span>)
           </a>
+
+          {/* Mostrar usuario logueado o botón de login */}
+          {usuario ? (
+            <span
+              style={{
+                marginLeft: "15px",
+                color: "#37224F",
+                fontWeight: "600",
+              }}
+            >
+              👋 Hola, {usuario.nombre.split(" ")[0]}
+            </span>
+          ) : (
+            <a href="/login" style={{ marginLeft: "15px", color: "#37224F" }}>
+              Iniciar sesión
+            </a>
+          )}
         </nav>
       </header>
 
       <main>
         <section id="carrito">
           <h2>Tu carrito</h2>
+
           <div id="carrito-lista">
             {carrito.map((item, index) => (
               <div className="item-carrito" key={index}>
-                <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    width: "100%",
+                  }}
+                >
                   <img
                     src={item.img}
                     alt={item.titulo}
@@ -100,7 +128,13 @@ function Carrito() {
                   <p style={{ flex: 1, margin: 0 }}>
                     {item.titulo} (x{item.cantidad})
                   </p>
-                  <p style={{ minWidth: "80px", textAlign: "right", margin: 0 }}>
+                  <p
+                    style={{
+                      minWidth: "80px",
+                      textAlign: "right",
+                      margin: 0,
+                    }}
+                  >
                     ${item.precio * item.cantidad}
                   </p>
                   <button

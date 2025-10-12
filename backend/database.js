@@ -1,15 +1,14 @@
 const sqlite3 = require("sqlite3").verbose();
 
-// Crea (o abre) la base de datos
 const db = new sqlite3.Database("./libros.db", (err) => {
   if (err) {
     console.error("Error al abrir la base de datos:", err.message);
   } else {
-    console.log("Base de datos conectada.");
+    console.log("✅ Base de datos conectada.");
   }
 });
 
-// Crear tabla de usuarios
+// Crear tablas
 db.serialize(() => {
   db.run(`
     CREATE TABLE IF NOT EXISTS usuarios (
