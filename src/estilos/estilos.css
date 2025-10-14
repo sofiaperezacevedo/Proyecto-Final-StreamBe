@@ -22,33 +22,34 @@ body {
 /* ====================== */
 /* HEADER */
 /* ====================== */
+/* ====================== */
+/* HEADER UNIFICADO */
+/* ====================== */
 header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #DD8D94;
-  padding: 10px 30px;
+  background-color: #da968b;
+  padding: 12px 50px;
   z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  font-weight: 500;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 header .titulo h1 {
-  color: #ffffff;
-  font-size: 32px;
+  color: #fff;
+  font-size: 28px;
   font-weight: 700;
-  margin-left: 20px;
+  margin: 0;
   text-align: left;
 }
 
-p, h3 {
-  color: #37224F;
-}
-
 .logo {
-  height: 40px;
+  height: 45px;
   width: auto;
   cursor: pointer;
   object-fit: contain;
@@ -56,22 +57,26 @@ p, h3 {
 
 nav {
   display: flex;
-  gap: 20px;
+  align-items: center;
+  gap: 25px;
   justify-content: flex-end;
-  width: 50%;
 }
 
 nav a {
   text-decoration: none;
-  color: #ffffff;
+  color: #fff;
   font-weight: 500;
-  transition: color 0.3s ease;
   font-size: 16px;
+  transition: opacity 0.2s ease;
 }
 
 nav a:hover {
-  color: #FFF;
-  font-weight: 600;
+  opacity: 0.8;
+}
+
+
+p, h3 {
+  color: #37224F;
 }
 
 /* ====================== */
@@ -518,11 +523,6 @@ button:hover,
   font-size: 14px;
 }
 
-header {
-  margin-bottom: 0;
-  border-bottom: none;
-}
-
 body::before {
   content: "";
   display: block;
@@ -534,8 +534,4 @@ body::before {
 main, .contenido-principal, .login-container {
   margin-top: 0;
   padding-top: calc(60px + 10px); 
-}
-
-body {
-  background-color: #DD8D94; 
 }

@@ -9,17 +9,15 @@ export default function Index() {
     const [busqueda, setBusqueda] = useState("");
     const [precioMax, setPrecioMax] = useState("");
     const [genero, setGenero] = useState("");
+    const nombreUsuario = localStorage.getItem("nombreUsuario");
 
-    // 📌 Filtrar libros
-    // 👉 Función para quitar tildes y normalizar
     function normalizar(str) {
         return str
             .toLowerCase()
-            .normalize("NFD") // separa letra + tilde
-            .replace(/[\u0300-\u036f]/g, ""); // borra las tildes
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "");
     }
 
-    // 📌 Filtrar libros
     const librosFiltrados = libros.filter((libro) => {
         const coincideBusqueda =
             normalizar(libro.titulo).includes(normalizar(busqueda)) ||
@@ -37,36 +35,42 @@ export default function Index() {
         return coincideBusqueda && coincidePrecio && coincideGenero;
     });
 
-
     return (
         <main>
-            {/* Header */}
-            <header className="header-fijo">
-                <a href="/">
-                    <img
-                        src="/fotos-libros/Adobe Express - file.png"
-                        alt="Logo"
-                        className="logo"
-                    />
-                </a>
-                <div className="titulo">
+            {/* HEADER UNIFICADO */}
+            <header className="header">
+                <div className="logo">
+                    <span className="logo-icon">📚</span>
                     <h1>Venta de Libros Usados</h1>
                 </div>
-                <nav>
-  <Link to="/">Venta</Link>
-  <Link to="/como-comprar">¿Cómo comprar?</Link>
-  <Link to="/quienes-somos">¿Quiénes somos?</Link>
-  <a href="https://www.instagram.com/librosusados.munro/" target="_blank" rel="noreferrer">Instagram</a>
-  <a href="https://www.facebook.com/profile.php?id=61574672454293&mibextid=ZbWKwL" target="_blank" rel="noreferrer">Facebook</a>
-  <Link to="/login">Usuario</Link>  
-  <Link to="/carrito">Carrito (<span>{carrito.length}</span>)</Link>
-  
-</nav>
-
-
+                <nav className="nav-links">
+                    <Link to="/">Venta</Link>
+                    <Link to="/como-comprar">¿Cómo comprar?</Link>
+                    <Link to="/quienes-somos">¿Quiénes somos?</Link>
+                    <a
+                        href="https://www.instagram.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Instagram
+                    </a>
+                    <a
+                        href="https://www.facebook.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        Facebook
+                    </a>
+                    {nombreUsuario ? (
+                        <span className="usuario">👋 Hola, {nombreUsuario}</span>
+                    ) : (
+                        <Link to="/login">Usuario</Link>
+                    )}
+                    <Link to="/carrito">Carrito ({carrito.length})</Link>
+                </nav>
             </header>
 
-            {/* Información preliminar */}
+            {/* INFORMACIÓN PRELIMINAR */}
             <section className="informacion-preliminar">
                 <div className="informacion-item">
                     <img src="/fotos-libros/punto.jpg" alt="Ubicación" />
@@ -88,7 +92,7 @@ export default function Index() {
                 </div>
             </section>
 
-            {/* Promociones */}
+            {/* PROMOCIONES */}
             <section className="seccion-contenedor">
                 <h2 className="titulo-promos">🎁 Sagas y Packs</h2>
                 <div className="promo-grid">
@@ -122,7 +126,7 @@ export default function Index() {
                 </div>
             </section>
 
-            {/* Buscador */}
+            {/* BUSCADOR */}
             <section
                 className="buscador fade-in"
                 style={{ animationDelay: "0.2s" }}
@@ -161,7 +165,7 @@ export default function Index() {
                 </select>
             </section>
 
-            {/* Lista dinámica de libros */}
+            {/* LISTA DE LIBROS */}
             <section id="lista-libros" className="libros-grid">
                 {librosFiltrados.length > 0 ? (
                     librosFiltrados.map((libro, i) => (
@@ -204,7 +208,14 @@ export default function Index() {
                             <p>
                                 <strong>Precio:</strong> ${libro.precio}
                             </p>
-                            <button onClick={() => agregarAlCarrito({...libro, precio: Number(libro.precio), })}>
+                            <button
+                                onClick={() =>
+                                    agregarAlCarrito({
+                                        ...libro,
+                                        precio: Number(libro.precio),
+                                    })
+                                }
+                            >
                                 Agregar al carrito
                             </button>
                         </div>
